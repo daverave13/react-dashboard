@@ -33,35 +33,33 @@ class App extends Component {
 
         let values = [];
         let dates = [];
+        
+        var url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
+        var bearer = 'Bearer ' + fitbitAccessToken;
+        const response = fetch(url, {
+            method: 'GET',
+            'Access-Control-Allow-Credentials': true,
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => response.json())
+            .then(json => {
+            let stepLog = json['activities-steps'];
+            values = []; 
+            dates = [];
+            for (let i = 30; i >= 24; i--) {
+                values.push(stepLog[i].value);
+                dates.push(stepLog[i].dateTime);
+            }
+        });
 
-        async function fetchValues() {
-            var url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
-            var bearer = 'Bearer ' + fitbitAccessToken;
-            const response = fetch(url, {
-                method: 'GET',
-                'Access-Control-Allow-Credentials': true,
-                headers: {
-                    'Authorization': bearer,
-                    'Content-Type': 'application/json'
-                }
-                })
-                .then(response => response.json())
-                .then(json => {
-                let stepLog = json['activities-steps'];
-                values = []; 
-                dates = [];
-                for (let i = 30; i >= 24; i--) {
-                    values.push(stepLog[i].value);
-                    dates.push(stepLog[i].dateTime);
-                }
-            });
-        }
-     fetchValues();
-     this.setState({
-        isLoaded: true,
-        stepArr: values,
-        dateArr: dates
-    });
+        this.setState({
+            isLoaded: true,
+            stepArr: values,
+            dateArr: dates
+        });
     }
 
     render() {
