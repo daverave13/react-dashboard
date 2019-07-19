@@ -81,7 +81,7 @@ class App extends Component {
                 let i = 7;
                 for (let day in sleepLog) {
                     let currentDay = new Date();
-                    currentDay.setDate(currentDay.getDate() - 7);     
+                    currentDay.setDate(currentDay.getDate() - i);     
                     console.log(currentDay);
                     i--;
                 }
