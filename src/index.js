@@ -36,7 +36,7 @@ class App extends Component {
 
         let url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
         let bearer = 'Bearer ' + fitbitAccessToken;
-        const response = fetch(url, {
+        let response = fetch(url, {
             method: 'GET',
             'Access-Control-Allow-Credentials': true,
             headers: {
@@ -65,7 +65,7 @@ class App extends Component {
         let endDate = new Date();
         endDate = endDate.toISOString().split('T')[0];
         url = `https://api.fitbit.com/1.2/user/-/sleep/date/${startDate}/${endDate}.json`;
-        const response = fetch(url, {
+        response = fetch(url, {
             method: 'GET',
             'Access-Control-Allow-Credentials': true,
             headers: {
