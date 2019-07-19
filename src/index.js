@@ -92,13 +92,12 @@ class App extends Component {
                     console.table(dates);
                     
 
-                    if (sleepDay === currentDay && sleepLog[i] && values.length < 7) {
+                    if (sleepDay === currentDay && sleepLog[i]) {
                         values.push(sleepLog[i]['minutesAsleep']);
                         dates.push(sleepDay);
-                    } else {
+                    } else if ( values.length < 7) {
                         values.push(0);
-                        dates.push(currentDay);
-                        i--;
+                        dates.push(currentDay); 
                     }
                 }
                 console.table(values);
