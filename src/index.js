@@ -79,7 +79,7 @@ class App extends Component {
                 let dates = [];
                 let sleepLog = json['sleep'];
                 for (let day in sleepLog) {
-                    console.log(typeof sleepLog[day]['dateOfSleep']);
+                    console.log(sleepLog[day]['dateOfSleep']);
                 }
             });
 
