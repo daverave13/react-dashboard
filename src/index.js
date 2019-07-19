@@ -83,7 +83,7 @@ class App extends Component {
                     let currentDay = new Date();
                     currentDay.setDate(currentDay.getDate() - i);
                     currentDay = currentDay.toISOString().split('T')[0];
-                    let sleepDay = sleepLog[day]['dateOfSleep'].toISOString().split('T')[0]
+                    let sleepDay = sleepLog[day]['dateOfSleep'];
                     if (sleepDay === currentDay) {
                         values.push(sleepLog[day]['minutesAsleep']);
                         dates.push(sleepDay)
