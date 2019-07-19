@@ -33,7 +33,8 @@ class App extends Component {
 
         let values = [];
         let dates = [];
-        
+        let self = this;
+
         var url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
         var bearer = 'Bearer ' + fitbitAccessToken;
         const response = fetch(url, {
@@ -53,13 +54,14 @@ class App extends Component {
                 values.push(stepLog[i].value);
                 dates.push(stepLog[i].dateTime);
             }
+            self.setState({
+                isLoaded: true,
+                stepArr: values,
+                dateArr: dates
+            });
         });
 
-        this.setState({
-            isLoaded: true,
-            stepArr: values,
-            dateArr: dates
-        });
+        
     }
 
     render() {
