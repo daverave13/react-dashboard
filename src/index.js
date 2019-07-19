@@ -84,10 +84,15 @@ class App extends Component {
                     currentDay.setDate(currentDay.getDate() - i);
                     currentDay = currentDay.toISOString().split('T')[0];
                     let sleepDay = sleepLog[day]['dateOfSleep'];
-                    if (sleepDay === currentDay) {
-                        values.push(sleepLog[day]['minutesAsleep']);
-                        dates.push(sleepDay)
-                    }
+
+                    console.log(`current vs sleep types: ${typeof currentDay} | ${typeof sleepDay}`);
+                    console.log(`current vs sleep values: ${currentDay} | ${sleepDay}`);
+                    
+
+                    // if (sleepDay === currentDay) {
+                    //     values.push(sleepLog[day]['minutesAsleep']);
+                    //     dates.push(sleepDay)
+                    // }
                     i--;
                 }
                 console.table(values);
