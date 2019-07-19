@@ -54,14 +54,14 @@ class App extends Component {
                     values.push(stepLog[i].value);
                     dates.push(stepLog[i].dateTime);
                 }
-                this.setState({
-                    isLoaded: true,
-                    stepArr: values,
-                    dateArr: dates
-                });
             });
         }
      fetchValues();
+     this.setState({
+        isLoaded: true,
+        stepArr: values,
+        dateArr: dates
+    });
     }
 
     render() {
