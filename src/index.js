@@ -83,6 +83,7 @@ class App extends Component {
                 
    
                 for (let i = 0; i <= 7; i++) {
+                    let sleepDay;
                     let currentDay = new Date();
                     currentDay.setDate(currentDay.getDate() - i);
                     currentDay = currentDay.toISOString().split('T')[0];
@@ -90,15 +91,14 @@ class App extends Component {
                     console.table(values);
                     console.table(dates);
                     
-                    let sleepDay = sleepLog[i]['dateOfSleep'];
 
-                    if (sleepDay === currentDay) {
+                    if (sleepDay === currentDay && sleepLog[i]) {
                         values.push(sleepLog[i]['minutesAsleep']);
                         dates.push(sleepDay);
                     } else {
                         values.push(0);
                         dates.push(currentDay);
-                        // i--;
+                        i--;
                     }
                 }
                 console.table(values);
