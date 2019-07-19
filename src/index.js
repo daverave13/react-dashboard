@@ -78,13 +78,20 @@ class App extends Component {
                 let values = [];
                 let dates = [];
                 let sleepLog = json['sleep'];
-                let i = 7;
+                let i = 6;
                 for (let day in sleepLog) {
                     let currentDay = new Date();
-                    currentDay.setDate(currentDay.getDate() - i);     
-                    console.log(currentDay);
+                    currentDay.setDate(currentDay.getDate() - i);
+                    currentDay = currentDay.toISOString.split('T')[0];
+                    let sleepDay = sleepLog[day]['dateOfSleep'].toISOString.split('T')[0]
+                    if (sleepDay === currentDay) {
+                        values.push(sleepLog[day]['minutesAsleep']);
+                        dates.push(sleepDay)
+                    }
                     i--;
                 }
+                console.table(values);
+                console.table(dates);                
             });
 
     }
