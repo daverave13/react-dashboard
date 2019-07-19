@@ -78,6 +78,9 @@ class App extends Component {
                 let values = [];
                 let dates = [];
                 let sleepLog = json['sleep'];
+
+                console.table(sleepLog);
+                
    
                 for (let i = 0; i <= 7; i++) {
                     let currentDay = new Date();
