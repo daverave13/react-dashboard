@@ -89,9 +89,27 @@ class App extends Component {
                     
                     if (sleepDay === currentDay) {
                         values.push(sleepLog[day]['minutesAsleep']);
-                        dates.push(sleepDay)
+                        dates.push(sleepDay);
+                    } else {
+                        values.push(0);
                     }
                     i++;
+                }
+
+                for (let i = 0; i <= 7; i++) {
+                    let currentDay = new Date();
+                    currentDay.setDate(currentDay.getDate() - i);
+                    currentDay = currentDay.toISOString().split('T')[0];
+                    let sleepDay = sleepLog[i]['dateOfSleep'];
+
+                    if (sleepDay === currentDay) {
+                        values.push(sleepLog[i]['minutesAsleep']);
+                        dates.push(sleepDay);
+                    } else {
+                        values.push(0);
+                        dates.push(currentDay);
+                        // i--;
+                    }
                 }
                 console.table(values);
                 console.table(dates);                
