@@ -87,6 +87,8 @@ class App extends Component {
                     currentDay.setDate(currentDay.getDate() - i);
                     currentDay = currentDay.toISOString().split('T')[0];
                     console.log(i);
+                    console.table(values);
+                    console.table(dates);
                     
                     let sleepDay = sleepLog[i]['dateOfSleep'];
 
