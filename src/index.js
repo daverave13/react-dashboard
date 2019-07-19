@@ -80,9 +80,9 @@ class App extends Component {
                 let sleepLog = json['sleep'];
                 let i = 7;
                 for (let day in sleepLog) {
-                    let today = new Date();
-                    today = today.setDate(today - i);
-                    console.log(today);
+                    let currentDay = new Date();
+                    currentDay.setDate(currentDay.getDate() - 7);     
+                    console.log(currentDay);
                     i--;
                 }
             });
