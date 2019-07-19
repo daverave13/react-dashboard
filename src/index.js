@@ -31,6 +31,9 @@ class App extends Component {
             fitbitAccessToken = fragmentQueryParameters.access_token;
         }
 
+        let values = [];
+        let dates = [];
+
         async function fetchValues() {
             var url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
             var bearer = 'Bearer ' + fitbitAccessToken;
@@ -45,22 +48,20 @@ class App extends Component {
                 .then(response => response.json())
                 .then(json => {
                 let stepLog = json['activities-steps'];
-                let values = []; 
-                let dates = [];
+                values = []; 
+                dates = [];
                 for (let i = 30; i >= 24; i--) {
                     values.push(stepLog[i].value);
                     dates.push(stepLog[i].dateTime);
                 }
+                this.setState({
+                    isLoaded: true,
+                    stepArr: values,
+                    dateArr: dates
+                });
             });
         }
-
-        fetchValues();
-
-        this.setState({
-            isLoaded: true,
-            stepArr: ["8494", "14007", "12567", "3516", "0", "0", "0"],
-            dateArr: ["2019-07-16", "2019-07-15", "2019-07-14", "2019-07-13", "2019-07-12", "2019-07-11", "2019-07-10"]
-        });
+     fetchValues();
     }
 
     render() {
