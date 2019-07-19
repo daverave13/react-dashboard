@@ -11,6 +11,7 @@ class App extends Component {
             error: null,
             isLoaded: false,
             dateArr: [],
+            sleepArr: [],
             stepArr: []
         }
     }
@@ -31,12 +32,10 @@ class App extends Component {
             fitbitAccessToken = fragmentQueryParameters.access_token;
         }
 
-        let values = [];
-        let dates = [];
         let self = this;
 
-        var url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
-        var bearer = 'Bearer ' + fitbitAccessToken;
+        let url = 'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json';
+        let bearer = 'Bearer ' + fitbitAccessToken;
         const response = fetch(url, {
             method: 'GET',
             'Access-Control-Allow-Credentials': true,
@@ -48,8 +47,8 @@ class App extends Component {
             .then(response => response.json())
             .then(json => {
             let stepLog = json['activities-steps'];
-            values = []; 
-            dates = [];
+            let values = []; 
+            let dates = [];
             for (let i = 30; i >= 24; i--) {
                 values.push(stepLog[i].value);
                 dates.push(stepLog[i].dateTime);
@@ -60,8 +59,25 @@ class App extends Component {
                 dateArr: dates
             });
         });
+        let startDate = new Date();
+        startDate.setDate(startDate.getDate() - 7);
+        startDate = startDate.toISOString().split('T')[0];
+        let endDate = new Date();
+        endDate = endDate.toISOString().split('T')[0];
+        url = `https://api.fitbit.com/1.2/user/-/sleep/date/${startDate}/${endDate}.json`;
+        const response = fetch(url, {
+            method: 'GET',
+            'Access-Control-Allow-Credentials': true,
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+            });
 
-        
     }
 
     render() {
