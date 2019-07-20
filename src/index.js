@@ -93,15 +93,15 @@ class App extends Component {
 
                 for (let x of sleepObjArr) {
                     for (let y of simpleSleepLog) {
-                        console.log(x);
-                        console.log(y);
                         if (x.date === y[1]) {
                             console.log('yeet');
+                            x.sleepHours = y[0]/60;
                         }
                     }
                     
                 }
                            
+                console.table(sleepObjArr);
             });
 
     }
