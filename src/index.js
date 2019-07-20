@@ -81,14 +81,24 @@ class App extends Component {
                 let sleepObjArr = [];
                 for (let i = 0; i <= 6; i++) {
                     let today = new Date();
+                    today.setDate(today.getDate() - i)
                     sleepObjArr.push({
-                        date: today.toISOString().split('T')[0],
-                        sleepHours: 0
+                        sleepHours: 0,
+                        date: today.toISOString().split('T')[0]
                         });
                 }
 
                 console.log(simpleSleepLog);
                 console.log(sleepObjArr);
+
+                for (let x in sleepObjArr) {
+                    for (let y in simpleSleepLog) {
+                        if (x.date === y[0]) {
+                            console.log('yeet');
+                        }
+                    }
+                    
+                }
                            
             });
 
