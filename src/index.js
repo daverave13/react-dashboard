@@ -87,8 +87,7 @@ class App extends Component {
                 for (let x of sleepArr) {
                     for (let y of simpleSleepLog) {
                         if (x[1] === y[1]) {
-                            console.log('yeet');
-                            x[0] = y[0];
+                            x[0] = y[0]/60;
                         }
                     }
                 }
@@ -122,7 +121,7 @@ class App extends Component {
                         <h1>Hours Slept</h1>
                         <Barchart 
                             labels = {this.state.dateArr}
-                            data = {this.state.stepArr}
+                            data = {this.state.sleepArr}
                             />
                     </div>
                 </div>
