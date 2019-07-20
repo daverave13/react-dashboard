@@ -85,10 +85,12 @@ class App extends Component {
                     today.setDate(today.getDate() - i)
                     sleepArr.push([0, today.toISOString().split('T')[0]]);
                 }
+
                 for (let x of sleepArr) {
                     for (let y of simpleSleepLog) {
                         if (x[1] === y[1]) {
                             x[0] = (y[0]/60).toFixed(1);
+                            return;
                         }
                     }
                 }
@@ -100,8 +102,6 @@ class App extends Component {
                     sleepArr: sleepArr,
                     sleepDateArr: sleepDateArr
                 });
-                           
-                console.log(sleepArr);
             });
 
     }
