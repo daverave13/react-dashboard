@@ -90,7 +90,6 @@ class App extends Component {
                     for (let y of simpleSleepLog) {
                         if (x[1] === y[1]) {
                             x[0] = (y[0]/60).toFixed(1);
-                            return;
                         }
                     }
                 }
