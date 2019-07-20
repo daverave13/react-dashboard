@@ -87,10 +87,6 @@ class App extends Component {
                         date: today.toISOString().split('T')[0]
                         });
                 }
-
-                // console.log(simpleSleepLog);
-                // console.log(sleepObjArr);
-
                 for (let x of sleepObjArr) {
                     for (let y of simpleSleepLog) {
                         if (x.date === y[1]) {
@@ -100,6 +96,10 @@ class App extends Component {
                     }
                     
                 }
+                self.setState({
+                    isLoaded: true,
+                    sleepArr: sleepObjArr['sleepHours']
+                });
                            
                 console.table(sleepObjArr);
             });
