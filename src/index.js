@@ -79,7 +79,7 @@ class App extends Component {
                 const simpleSleepLog = sleepLog.map(x => [ x.minutesAsleep, x.dateOfSleep]);
                 
                 let sleepObjArr = [];
-                for (let i = 0; i <= 6; i++) {
+                for (let i = 1; i <= 6; i++) {
                     let today = new Date();
                     today.setDate(today.getDate() - i)
                     sleepObjArr.push({
@@ -95,7 +95,7 @@ class App extends Component {
                     for (let y of simpleSleepLog) {
                         console.log(x);
                         console.log(y);
-                        if (x.date === y[0]) {
+                        if (x.date === y[1]) {
                             console.log('yeet');
                         }
                     }
