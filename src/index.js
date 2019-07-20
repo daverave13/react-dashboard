@@ -59,50 +59,26 @@ class App extends Component {
                 dateArr: dates
             });
         });
-        // let startDate = new Date();
-        // startDate.setDate(startDate.getDate() - 7);
-        // startDate = startDate.toISOString().split('T')[0];
-        // let endDate = new Date();
-        // endDate = endDate.toISOString().split('T')[0];
-        // url = `https://api.fitbit.com/1.2/user/-/sleep/date/${startDate}/${endDate}.json`;
-        // response = fetch(url, {
-        //     method: 'GET',
-        //     'Access-Control-Allow-Credentials': true,
-        //     headers: {
-        //         'Authorization': bearer,
-        //         'Content-Type': 'application/json'
-        //     }
-        //     })
-        //     .then(response => response.json())
-        //     .then(json => {
-        //         let values = [];
-        //         let dates = [];
-        //         let sleepLog = json['sleep'];
-
-        //         console.table(sleepLog);
+        let startDate = new Date();
+        startDate.setDate(startDate.getDate() - 7);
+        startDate = startDate.toISOString().split('T')[0];
+        let endDate = new Date();
+        endDate = endDate.toISOString().split('T')[0];
+        url = `https://api.fitbit.com/1.2/user/-/sleep/date/${startDate}/${endDate}.json`;
+        response = fetch(url, {
+            method: 'GET',
+            'Access-Control-Allow-Credentials': true,
+            headers: {
+                'Authorization': bearer,
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => response.json())
+            .then(json => {
+                let sleepLog = json['sleep'];
+                console.log(sleepLog);
                 
-   
-        //         for (let i = 0; i <= 7; i++) {
-        //             let sleepDay;
-        //             let currentDay = new Date();
-        //             currentDay.setDate(currentDay.getDate() - i);
-        //             currentDay = currentDay.toISOString().split('T')[0];
-        //             console.log(i);
-        //             console.table(values);
-        //             console.table(dates);
-                    
-
-        //             if (sleepDay === currentDay && sleepLog[i]) {
-        //                 values.push(sleepLog[i]['minutesAsleep']);
-        //                 dates.push(sleepDay);
-        //             } else if ( values.length < 7) {
-        //                 values.push(0);
-        //                 dates.push(currentDay); 
-        //             }
-        //         }
-        //         console.table(values);
-        //         console.table(dates);                
-        //     });
+            });
 
     }
 
