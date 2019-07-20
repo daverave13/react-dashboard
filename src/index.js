@@ -78,27 +78,29 @@ class App extends Component {
                 let sleepLog = json['sleep'];
                 const simpleSleepLog = sleepLog.map(x => [ x.minutesAsleep, x.dateOfSleep]);
                 
-                let sleepArr = [];
+                let dateArr = [];
+                let tempSleepArr = [];
                 for (let i = 1; i <= 7; i++) {
                     let today = new Date();
                     today.setDate(today.getDate() - i)
-                    sleepArr.push([0, today.toISOString().split('T')[0]]);
+                    dateArr.push(today.toISOString().split('T')[0]);
                 }
-                for (let x of sleepArr) {
+                for (let x of dateArr) {
                     for (let y of simpleSleepLog) {
-                        if (x[1] === y[1]) {
+                        if (x === y[1]) {
                             console.log('yeet');
-                            x[0] = y[0];
+                            tempSleepArr.push(y[0]);
                         }
                     }
-                    
                 }
+
+
                 self.setState({
                     isLoaded: true,
-                    sleepArr: sleepArr[0]
+                    sleepArr: tempSleepArr
                 });
                            
-                console.log(sleepArr[0]);
+                console.log(tempSleepArr);
             });
 
     }
