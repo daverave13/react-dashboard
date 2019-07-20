@@ -78,11 +78,18 @@ class App extends Component {
                 let sleepLog = json['sleep'];
                 const simpleSleepLog = sleepLog.map(x => [ x.minutesAsleep, x.dateOfSleep]);
                 
+                let sleepObjArr = [];
+                for (let i = 0; i <= 6; i++) {
+                    let today = new Date();
+                    sleepObjArr.push({
+                        date: today.toISOString().split('T')[0],
+                        sleepHours: 0
+                        });
+                }
+
                 console.log(simpleSleepLog);
-
-
-
-                
+                console.log(sleepObjArr);
+                           
             });
 
     }
