@@ -124,7 +124,7 @@ class App extends Component {
                         <h1>Hours Slept</h1>
                         <Barchart 
                             labels = {this.state.dateArr}
-                            data = {[6,8,7,5,7,3,9]}
+                            data = {this.state.sleepArr}
                             />
                     </div>
                 </div>
