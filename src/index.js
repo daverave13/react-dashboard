@@ -76,7 +76,7 @@ class App extends Component {
             .then(response => response.json())
             .then(json => {
                 let sleepLog = json['sleep'];
-                const simpleSleepLog = sleepLog.map(x => x.dateOfSleep);
+                const simpleSleepLog = sleepLog.map(x => [x.dateOfSleep, x.mintutesAsleep]);
                 
                 console.log(simpleSleepLog);
                 
