@@ -101,7 +101,7 @@ class App extends Component {
                     sleepArr: sleepObjArr['sleepHours']
                 });
                            
-                console.log(sleepObjArr.sleepHours);
+                console.log(sleepObjArr);
             });
 
     }
