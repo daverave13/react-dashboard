@@ -120,8 +120,8 @@ class App extends Component {
                     <div style={{height: 400, width: 400}}>
                         <h1>Hours Slept</h1>
                         <Barchart 
-                            labels = {this.state.dateArr}
-                            data = {this.state.sleepArr}
+                            labels = {this.state.dateArr.reverse()}
+                            data = {this.state.sleepArr.reverse()}
                             />
                     </div>
                 </div>
