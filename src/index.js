@@ -10,7 +10,8 @@ class App extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            dateArr: [],
+            stepDateArr: [],
+            sleepDateArr: [],
             sleepArr: [],
             stepArr: []
         }
@@ -56,7 +57,7 @@ class App extends Component {
             self.setState({
                 isLoaded: true,
                 stepArr: values,
-                dateArr: dates
+                stepDateArr: dates
             });
         });
         let startDate = new Date();
@@ -88,14 +89,17 @@ class App extends Component {
                     for (let y of simpleSleepLog) {
                         if (x[1] === y[1]) {
                             x[0] = y[0]/60;
+                            // return;
                         }
                     }
                 }
+                let sleepDateArr = sleepArr.map(x => x[1]);
                 sleepArr = sleepArr.map(x => x[0]);
 
                 self.setState({
                     isLoaded: true,
-                    sleepArr: sleepArr
+                    sleepArr: sleepArr,
+                    sleepDateArr: sleepDateArr
                 });
                            
                 console.log(sleepArr);
@@ -112,7 +116,7 @@ class App extends Component {
                     <div style={{height: 400, width: 400}}>
                         <h1>Fitbit Steps</h1>
                         <Barchart className="sans"
-                            labels = {this.state.dateArr.reverse()}
+                            labels = {this.state.stepDateArr.reverse()}
                             data = {this.state.stepArr.reverse()}
                             />
                     </div>
@@ -120,7 +124,7 @@ class App extends Component {
                     <div style={{height: 400, width: 400}}>
                         <h1>Hours Slept</h1>
                         <Barchart 
-                            labels = {this.state.dateArr.reverse()}
+                            labels = {this.state.sleepDateArr.reverse()}
                             data = {this.state.sleepArr.reverse()}
                             />
                     </div>
