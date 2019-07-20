@@ -98,7 +98,7 @@ class App extends Component {
                     sleepArr: sleepArr[0]
                 });
                            
-                console.log(sleepArr[0]);
+                console.log(sleepArr);
             });
 
     }
