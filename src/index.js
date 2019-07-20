@@ -82,7 +82,7 @@ class App extends Component {
                 for (let i = 1; i <= 7; i++) {
                     let today = new Date();
                     today.setDate(today.getDate() - i)
-                    sleepArr.push(0, today.toISOString().split('T')[0]);
+                    sleepArr.push([0, today.toISOString().split('T')[0]]);
                 }
                 for (let x of sleepArr) {
                     for (let y of simpleSleepLog) {
