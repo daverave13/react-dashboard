@@ -88,11 +88,13 @@ class App extends Component {
                         });
                 }
 
-                console.log(simpleSleepLog);
-                console.log(sleepObjArr);
+                // console.log(simpleSleepLog);
+                // console.log(sleepObjArr);
 
                 for (let x in sleepObjArr) {
                     for (let y in simpleSleepLog) {
+                        console.log(x);
+                        console.log(y);
                         if (x.date === y[0]) {
                             console.log('yeet');
                         }
