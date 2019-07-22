@@ -80,7 +80,7 @@ class App extends Component {
                 const simpleSleepLog = sleepLog.map(x => [ x.minutesAsleep, x.dateOfSleep]);
                 
                 let sleepArr = [];
-                for (let i = 1; i <= 7; i++) {
+                for (let i = 0; i <= 6; i++) {
                     let today = new Date();
                     today.setDate(today.getDate() - i)
                     sleepArr.push([0, today.toISOString().split('T')[0]]);
