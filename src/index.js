@@ -50,6 +50,7 @@ class App extends Component {
             let stepLog = json['activities-steps'];
             let values = []; 
             let dates = [];
+            // API returns 30 days of data, I just want the last week
             for (let i = 30; i >= 24; i--) {
                 values.push(stepLog[i].value);
                 dates.push(stepLog[i].dateTime);
